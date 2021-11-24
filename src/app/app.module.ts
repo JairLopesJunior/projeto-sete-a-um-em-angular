@@ -1,16 +1,18 @@
+import { CampoControlErroModule } from './shared/components/campo-control-erro/campo-control-erro.module';
+import { CadastroUsuarioModule } from './core/pages/cadastro-usuario/cadastro-usuario.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CadastroUsuarioComponent } from './core/pages/cadastro-usuario/cadastro-usuario.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CadastroUsuarioComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CadastroUsuarioModule,
+    CampoControlErroModule
   ],
   providers: [],
   bootstrap: [AppComponent]

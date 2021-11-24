@@ -16,6 +16,22 @@ export class CadastroUsuarioComponent implements OnInit {
     this.formularioUsuario();
   }
 
+  onSubmit() {
+    
+  }
+
+  verificaValidTouched(campo: string) {
+    return !this.cadastroUsuario.get(campo)?.valid 
+    && this.cadastroUsuario.get(campo)?.touched;
+  }
+
+  aplicaCssErro(campo: any) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
+  }
+
   formularioUsuario(): void {
     this.cadastroUsuario = this.fb.group({
       nome: ['', Validators.compose([
