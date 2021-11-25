@@ -12,11 +12,11 @@ export class CadastroUsuarioComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  get nome(): void {
+  get nome() {
     return this.cadastroUsuario.get('nome')?.value;
   }
 
-  get senha(): void {
+  get senha() {
     return this.cadastroUsuario.get('senha')?.value;
   }
 
@@ -26,9 +26,13 @@ export class CadastroUsuarioComponent implements OnInit {
 
   onSubmit() {
     if(this.cadastroUsuario){
-      const nome = this.cadastroUsuario.get('nome')?.value;
-      const senha = this.cadastroUsuario.get('senha')?.value;
-      localStorage.setItem(nome, senha);
+      const keyRetornada = localStorage.getItem(this.nome);
+      console.log(keyRetornada)
+      console.log(this.nome)
+      const isIgual = keyRetornada !== null;
+      isIgual ? alert("Já existe um usuário com este nome!!")
+              : ( localStorage.setItem(this.nome, this.senha),
+                  alert("Dados salvos com sucesso!!") );
     }
   }
 
