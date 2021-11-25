@@ -1,3 +1,4 @@
+import { CampoControlErroModule } from './../../../shared/components/campo-control-erro/campo-control-erro.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +11,8 @@ import { CadastroUsuarioComponent } from './cadastro-usuario.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CampoControlErroModule
   ],
   exports: [CadastroUsuarioComponent],
 })
