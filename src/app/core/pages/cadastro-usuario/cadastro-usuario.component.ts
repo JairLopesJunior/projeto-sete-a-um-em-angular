@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -10,7 +11,8 @@ export class CadastroUsuarioComponent implements OnInit {
 
   cadastroUsuario: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private usuarioService: UsuarioService) { }
 
   get nome() {
     return this.cadastroUsuario.get('nome')?.value;
@@ -27,11 +29,11 @@ export class CadastroUsuarioComponent implements OnInit {
   onSubmit() {
     if(this.cadastroUsuario){
       const keyRetornada = localStorage.getItem(this.nome);
-      console.log(keyRetornada)
-      console.log(this.nome)
       const isIgual = keyRetornada !== null;
       isIgual ? alert("Já existe um usuário com este nome!!")
               : ( localStorage.setItem(this.nome, this.senha),
+                  this.usuarioService.nome = this.nome,
+                  this.usuarioService.senha = this.senha,
                   alert("Dados salvos com sucesso!!") );
     }
   }

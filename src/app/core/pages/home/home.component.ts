@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
+  comprarAlbum() {
+    const keyAlbumRetornado = localStorage.getItem('album');
+    const valueNomeUsuario = localStorage.getItem(this.usuarioService.nomeUsuario)!;
+    if(!keyAlbumRetornado){
+      localStorage.setItem('album', valueNomeUsuario);
+      alert("Álbum adquirido com sucesso :D");
+      return;
+    }
+  }
 }
