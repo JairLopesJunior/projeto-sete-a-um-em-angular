@@ -1,5 +1,6 @@
 import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    const keyAlbumRetornado = localStorage.getItem('album');
+    if(keyAlbumRetornado){
+      this.router.navigate(['/album']);
+    }
   }
 
   comprarAlbum() {
-    const keyAlbumRetornado = localStorage.getItem('album');
     const valueNomeUsuario = localStorage.getItem(this.usuarioService.nomeUsuario)!;
-    if(!keyAlbumRetornado){
-      localStorage.setItem('album', valueNomeUsuario);
-      alert("Álbum adquirido com sucesso :D");
-      return;
-    }
+    localStorage.setItem('album', valueNomeUsuario);
+    alert("Álbum adquirido com sucesso :D");
+    this.router.navigate(['/album']);
   }
+
 }
