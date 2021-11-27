@@ -1,13 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './core/pages/pages.module';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-
-const routes: Routes = [];
 
 @NgModule({
   declarations: [
@@ -17,10 +16,11 @@ const routes: Routes = [];
     BrowserModule,
     SharedModule,
     PagesModule,
-    RouterModule.forRoot(routes)
+    HttpClientModule,
+    AppRoutingModule
   ],
   exports: [
-    RouterModule
+    
   ],
   bootstrap: [AppComponent]
 })

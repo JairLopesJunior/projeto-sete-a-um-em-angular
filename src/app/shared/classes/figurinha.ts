@@ -1,3 +1,3 @@
-class Figurinha {
+export class Figurinha {
     numero: number;
 }

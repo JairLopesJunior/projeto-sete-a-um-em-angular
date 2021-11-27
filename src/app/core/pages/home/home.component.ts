@@ -1,3 +1,4 @@
+import { PacotinhoService } from './../../../shared/services/pacotinho.service';
 import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,9 +11,11 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService,
-              private router: Router) { }
+              private router: Router,
+              private pService: PacotinhoService) { }
 
   ngOnInit(): void {
+    this.pService.pacotinho;
     const keyAlbumRetornado = localStorage.getItem('album');
     if(keyAlbumRetornado){
       this.router.navigate(['/album']);
