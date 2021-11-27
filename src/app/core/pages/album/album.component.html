@@ -1,4 +1,11 @@
 <div>
     <span style="font-size: 20px; margin-right: 6px;">Comprar pacotinho?</span>
     <button class="btn btn-primary" (click)="comprarPacotinho()">PACOTINHO</button>
+    <div class="row">
+        <div class="col-md-2" *ngFor="let fig of todasFigurinhas">
+            <ul>
+                <li>{{ fig }}</li>
+            </ul>
+        </div>
+    </div>
 </div>

@@ -30,13 +30,13 @@ export class PacotinhoService {
     if(figurinhasRetornadas === null){
       this.figurinhas.figurinhas = pFigurinhas;
       const pString = this.converterObjString(this.figurinhas); // Convertendo de Objeto para String
-      localStorage.setItem('pacotinho', pString); 
+      localStorage.setItem('figurinhasObtidas', pString); 
       return;
     }
     let todasFigurinhasObj: Figurinhas = this.converterStringObj(figurinhasRetornadas);
     todasFigurinhasObj.figurinhas = todasFigurinhasObj.figurinhas.concat(pFigurinhas);
     const pString = this.converterObjString(todasFigurinhasObj); // Convertendo de Objeto para String
-    localStorage.setItem('pacotinho', pString); 
+    localStorage.setItem('figurinhasObtidas', pString); 
   }
 
   converterObjString(obj: Figurinhas): string {

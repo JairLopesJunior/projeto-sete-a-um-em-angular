@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../../../shared/services/localstorage.service';
 import { PacotinhoService } from './../../../shared/services/pacotinho.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
+  
+  todasFigurinhas = this._localstorageService.getLocalStorage('figurinhasObtidas');
 
-  constructor(private pService: PacotinhoService) { }
+  constructor(private pService: PacotinhoService,
+                      private _localstorageService: LocalstorageService) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +20,8 @@ export class AlbumComponent implements OnInit {
   comprarPacotinho() {
     const pacotinho = this.pService.pacotinho;
     this.pService.setLocalStorage(pacotinho);
-    console.log(localStorage.getItem('pacotinho'));
+    const figurinhas = pacotinho.figurinhas;
+    const numeroFig = figurinhas.map(fig => fig.numero);
+    alert("Pacotinho adquirido com sucesso, contendo as seguintes figurinhas: " + JSON.stringify(numeroFig));
   }
 }
