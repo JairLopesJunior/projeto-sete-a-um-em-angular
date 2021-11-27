@@ -24,7 +24,8 @@ export class PacotinhoService {
     return classPacotinho;
   }
 
-  setLocalStorage(pacotinho: Pacotinho) {
+  setLocalStorage(pacotinhoObtido: Pacotinho) {
+    const pacotinho = pacotinhoObtido;
     const pFigurinhas = pacotinho.figurinhas;
     let figurinhasRetornadas = this.verificarSeExisteFigurinhas();
     if(figurinhasRetornadas === null){
@@ -48,7 +49,7 @@ export class PacotinhoService {
   }
 
   verificarSeExisteFigurinhas(): string {
-    const todasFigurinhas = localStorage.getItem('pacotinho') as string;
+    const todasFigurinhas = localStorage.getItem('figurinhasObtidas') as string;
     return todasFigurinhas;
   }
 }

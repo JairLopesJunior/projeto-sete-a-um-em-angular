@@ -1,4 +1,3 @@
-import { PacotinhoService } from './../../../shared/services/pacotinho.service';
 import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,6 +13,8 @@ export class HomeComponent implements OnInit {
               private router: Router,) { }
 
   ngOnInit(): void {
+    const ativarRota = document.querySelector('.nav .navbar .collapse .navbar-nav .nav-item');
+    console.log(ativarRota);
     const keyAlbumRetornado = localStorage.getItem('album');
     if(keyAlbumRetornado){
       this.router.navigate(['/album']);
