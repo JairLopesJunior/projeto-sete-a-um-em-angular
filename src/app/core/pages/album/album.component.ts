@@ -1,3 +1,4 @@
+import { PacotinhoService } from './../../../shared/services/pacotinho.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pService: PacotinhoService) { }
 
   ngOnInit(): void {
   }
-
+  
+  comprarPacotinho() {
+    const pacotinho = this.pService.pacotinho;
+    this.pService.setLocalStorage(pacotinho);
+    console.log(localStorage.getItem('pacotinho'));
+  }
 }
