@@ -1,3 +1,4 @@
+import { AlbumModule } from './album/album.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -11,11 +12,11 @@ import { AlbumComponent } from './album/album.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    AlbumComponent
   ],
   imports: [
     CommonModule,
     CadastroUsuarioModule,
+    AlbumModule,
     RouterModule.forChild([
       {
           path: 'album', component: AlbumComponent

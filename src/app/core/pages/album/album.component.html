@@ -1,14 +1,29 @@
-<div class="mb-3">
-    <span style="font-size: 20px; margin-right: 6px;">Comprar pacotinho?</span>
-    <button class="btn btn-primary" (click)="comprarPacotinho()">PACOTINHO</button>
-</div>
-
-<div style="border: 1px solid black">
+<div class="container mt-5" style="max-width: 60vw">
     <div class="row">
-        <div class="col-md-2" *ngFor="let fig of todasFigurinhas">
-            <ul>
-                <li>{{ fig }}</li>
-            </ul>
+        <div class="col-md-6">
+            <h1>Meu Álbum</h1>
+        </div>
+        <div class="col-md-6">
+            <span style="font-size: 20px; margin-right: 6px;">Comprar pacotinho?</span>
+            <button class="btn btn-primary" (click)="comprarPacotinho()">PACOTINHO</button>
+        </div>
+    </div>
+
+    <div style="border: 1px solid black">
+        <div class="row">
+            <div class="col-md-2" *ngFor="let fig of todasFigurinhas">
+                <ul>
+                    <li>{{ fig }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4" style="margin-bottom: 5rem">
+        <div
+          class="col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2 mb-2"
+        >
+            <app-card></app-card>
         </div>
     </div>
 </div>
