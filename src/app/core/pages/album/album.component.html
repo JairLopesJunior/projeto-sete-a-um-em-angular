@@ -4,26 +4,17 @@
             <h1>Meu Álbum</h1>
         </div>
         <div class="col-md-6">
-            <span style="font-size: 20px; margin-right: 6px;">Comprar pacotinho?</span>
-            <button class="btn btn-primary" (click)="comprarPacotinho()">PACOTINHO</button>
+            <button class="btn btn-primary" (click)="comprarPacotinho()">COMPRAR PACOTINHO</button>
         </div>
     </div>
+    <hr style="margin: 0px">
 
-    <div style="border: 1px solid black">
-        <div class="row">
-            <div class="col-md-2" *ngFor="let fig of todasFigurinhas">
-                <ul>
-                    <li>{{ fig }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-4" style="margin-bottom: 5rem">
+    <div class="row mt-4">
         <div
           class="col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2 mb-2"
+          *ngFor="let fig of todasFigurinhas"
         >
-            <app-card></app-card>
+            <app-card [figurinha]="fig"></app-card>
         </div>
     </div>
 </div>

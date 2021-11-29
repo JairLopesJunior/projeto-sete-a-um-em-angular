@@ -16,10 +16,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CommonModule,
     RouterModule.forChild([
       {
-          path: '', component: HomeComponent
+          path: 'home', component: HomeComponent
       },
       {
-          path: 'home', component: HomeComponent
+          path: '', component: CadastroUsuarioComponent
       },
       {
           path: 'cadastro', component: CadastroUsuarioComponent
