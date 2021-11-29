@@ -9,19 +9,24 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  keyAlbumRetornado = localStorage.getItem('album');
+
   constructor(private usuarioService: UsuarioService,
               private router: Router,) { }
 
   ngOnInit(): void {
-    const ativarRota = document.querySelector('.nav .navbar .collapse .navbar-nav .nav-item');
-    console.log(ativarRota);
-    const keyAlbumRetornado = localStorage.getItem('album');
-    if(keyAlbumRetornado){
+    this.keyAlbumRetornado = localStorage.getItem('album');
+    if(this.keyAlbumRetornado){
       this.router.navigate(['/album']);
     }
   }
 
   comprarAlbum() {
+    console.log(this.usuarioService.nome);
+    if(this.usuarioService.nome === '') {
+      alert("Por favor faça o cadastro!!");
+      return;
+    }
     const valueNomeUsuario = localStorage.getItem(this.usuarioService.nomeUsuario)!;
     localStorage.setItem('album', valueNomeUsuario);
     alert("Álbum adquirido com sucesso :D");

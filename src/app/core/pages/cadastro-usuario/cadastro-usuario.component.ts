@@ -1,6 +1,7 @@
 import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -12,7 +13,8 @@ export class CadastroUsuarioComponent implements OnInit {
   cadastroUsuario: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private usuarioService: UsuarioService) { }
+              private usuarioService: UsuarioService,
+              private router: Router) { }
 
   get nome() {
     return this.cadastroUsuario.get('nome')?.value;
@@ -34,7 +36,8 @@ export class CadastroUsuarioComponent implements OnInit {
               : ( localStorage.setItem(this.nome, this.senha),
                   this.usuarioService.nome = this.nome,
                   this.usuarioService.senha = this.senha,
-                  alert("Dados salvos com sucesso!!") );
+                  alert("Dados salvos com sucesso!!"),
+                  this.router.navigate(['/home']) );
     }
   }
 
