@@ -21,4 +21,29 @@ export class LocalstorageService {
                   });
     return numFig;
   }
+
+  getMinhasFigStr(): string {
+    let minhasFig = localStorage.getItem('minhasFig');
+    return minhasFig as string;
+  }
+
+  getMinhasFigObj(): Figurinhas {
+    let minhasFig = localStorage.getItem('minhasFig') as string;
+    let minhasFigObj: Figurinhas = JSON.parse(minhasFig);
+    return minhasFigObj;
+  }
+  
+
+  setMinhasFigObj(figurinhas: Figurinha[]) {
+    let minhasFig = this.getMinhasFigObj();
+    minhasFig.figurinhas = minhasFig.figurinhas.concat(figurinhas);
+    localStorage.setItem('minhasFig', JSON.stringify(minhasFig));
+  }
+
+  setMinhasFigStr(figurinhas: string) {
+    let minhasFig = this.getMinhasFigStr();
+    let minhasFigObj: Figurinhas = JSON.parse(minhasFig);
+    minhasFigObj.figurinhas = minhasFigObj.figurinhas.concat(JSON.parse(figurinhas));
+    localStorage.setItem('minhasFig', JSON.stringify(minhasFigObj));
+  }
 }
