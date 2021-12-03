@@ -23,12 +23,19 @@ export class LocalstorageService {
   }
 
   getMinhasFigStr(): string {
-    let minhasFig = localStorage.getItem('minhasFig');
+    let minhasFig = localStorage.getItem('minhasFigs');
     return minhasFig as string;
   }
 
   getMinhasFigObj(): Figurinhas {
-    let minhasFig = localStorage.getItem('minhasFig') as string;
+    let minhasFig = localStorage.getItem('minhasFigs') as string;
+    if(minhasFig === null) {
+      let figurinhas = new Figurinhas();
+      figurinhas.figurinhas = [];
+      localStorage.setItem('minhasFigs', JSON.stringify(figurinhas));
+      let minhasFig = localStorage.getItem('minhasFigs') as string;
+      return JSON.parse(minhasFig);
+    }
     let minhasFigObj: Figurinhas = JSON.parse(minhasFig);
     return minhasFigObj;
   }
@@ -37,13 +44,13 @@ export class LocalstorageService {
   setMinhasFigObj(figurinhas: Figurinha[]) {
     let minhasFig = this.getMinhasFigObj();
     minhasFig.figurinhas = minhasFig.figurinhas.concat(figurinhas);
-    localStorage.setItem('minhasFig', JSON.stringify(minhasFig));
+    localStorage.setItem('minhasFigs', JSON.stringify(minhasFig));
   }
 
   setMinhasFigStr(figurinhas: string) {
     let minhasFig = this.getMinhasFigStr();
     let minhasFigObj: Figurinhas = JSON.parse(minhasFig);
     minhasFigObj.figurinhas = minhasFigObj.figurinhas.concat(JSON.parse(figurinhas));
-    localStorage.setItem('minhasFig', JSON.stringify(minhasFigObj));
+    localStorage.setItem('minhasFigs', JSON.stringify(minhasFigObj));
   }
 }

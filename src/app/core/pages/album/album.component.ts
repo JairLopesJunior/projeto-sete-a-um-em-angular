@@ -16,14 +16,14 @@ export class AlbumComponent implements OnInit {
                       private _localstorageService: LocalstorageService) { }
 
   ngOnInit(): void {
-    this.todasFigurinhas = this._localstorageService.getLocalStorage('figurinhasObtidas');
+    this.todasFigurinhas = this._localstorageService.getLocalStorage('minhasFigs');
   }
   
   comprarPacotinho() {
     const pacotinho = this.pService.pacotinho;
     const numeroFigurinhas: Figurinha[] = pacotinho.figurinhas;
-    this.pService.setLocalStorage(pacotinho);
+    this.pService.setLocalStorage(numeroFigurinhas);
     alert("Pacotinho adquirido com sucesso, contendo as seguintes figurinhas: " + Object.values(numeroFigurinhas.map(fig => fig.numero)));
-    this.todasFigurinhas = this._localstorageService.getLocalStorage('figurinhasObtidas');
+
   }
 }
