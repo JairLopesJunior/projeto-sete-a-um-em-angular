@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   comprarAlbum() {
-    console.log(this.usuarioService.nome);
     if(this.usuarioService.nome === '') {
       alert("Por favor faça o cadastro!!");
       return;

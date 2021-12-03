@@ -9,7 +9,9 @@ export class UsuarioService {
   senhaUsuario = '';
 
   get nome() {
-    return this.nomeUsuario;
+    let login = localStorage.getItem('login') as string;
+    let loginArray = JSON.parse(login);
+    return loginArray[0];
   }
 
   get senha() {

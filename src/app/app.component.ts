@@ -1,3 +1,5 @@
+import { UsuarioService } from './shared/services/usuario.service';
+import { LocalstorageService } from './shared/services/localstorage.service';
 import { Component } from '@angular/core';
 
 @Component({

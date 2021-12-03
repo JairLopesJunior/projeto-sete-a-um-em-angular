@@ -13,7 +13,6 @@ export class CadastroUsuarioComponent implements OnInit {
   cadastroUsuario: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private usuarioService: UsuarioService,
               private router: Router) { }
 
   get nome() {
@@ -33,9 +32,7 @@ export class CadastroUsuarioComponent implements OnInit {
       const keyRetornada = localStorage.getItem(this.nome);
       const isIgual = keyRetornada !== null;
       isIgual ? alert("Já existe um usuário com este nome!!")
-              : ( localStorage.setItem(this.nome, this.senha),
-                  this.usuarioService.nome = this.nome,
-                  this.usuarioService.senha = this.senha,
+              : ( localStorage.setItem('login', JSON.stringify([this.nome, this.senha])),
                   alert("Dados salvos com sucesso!!"),
                   this.router.navigate(['/home']) );
     }

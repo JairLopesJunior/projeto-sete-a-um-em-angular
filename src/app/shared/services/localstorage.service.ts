@@ -39,7 +39,6 @@ export class LocalstorageService {
     let minhasFigObj: Figurinhas = JSON.parse(minhasFig);
     return minhasFigObj;
   }
-  
 
   setMinhasFigObj(figurinhas: Figurinha[]) {
     let minhasFig = this.getMinhasFigObj();
