@@ -15,33 +15,32 @@
                 COLAR FIGURINHA
             </button>
             <!-- The Modal -->
-<div class="modal" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
   
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">COLAR FIGURINHA</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                        <h4 class="modal-title">COLAR FIGURINHA</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
   
-        <!-- Modal body -->
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="usr">Número da Figurinha:</label>
-                <input type="text" class="form-control" id="usr">
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="usr">Número da Figurinha:</label>
+                                <input type="number" class="form-control" id="numFig">
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="colarFigurinha(); $event.preventDefault()">COLAR</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">FECHAR</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">COLAR</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">FECHAR</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
         </div>
     </div>
     <hr style="margin: 0px">

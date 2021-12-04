@@ -27,4 +27,8 @@ export class FigurinhaService {
     return numFigsOrdenadas;
   }
 
+  colarFigurinha() {
+    
+  }
+
 }

@@ -32,4 +32,10 @@ export class AlbumComponent implements OnInit {
     alert("Pacotinho adquirido com sucesso, contendo as seguintes figurinhas: " + Object.values(numeroFigurinhas.map(fig => fig.numero)));
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
   }
+
+  colarFigurinha() {
+    let numFig = ((document.getElementById('numFig') as HTMLInputElement).value);
+    console.log(numFig)
+    console.log(typeof numFig)
+  }
 }
