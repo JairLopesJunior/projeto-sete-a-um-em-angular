@@ -21,7 +21,7 @@ export class AlbumComponent implements OnInit {
               private _usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.todasFigurinhas = this._localstorageService.getLocalStorage('minhasFigs');
+    this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
     this.nome = this._usuarioService.nome;
   }
   
