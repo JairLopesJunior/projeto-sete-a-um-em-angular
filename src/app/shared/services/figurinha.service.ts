@@ -27,8 +27,12 @@ export class FigurinhaService {
     return numFigsOrdenadas;
   }
 
-  colarFigurinha() {
-    
+  colarFigurinha(fig: number) {
+    console.log(this.verificarFigExiste(fig));
   }
 
+  private verificarFigExiste(fig: number): boolean {
+    let minhasFigs = this.obterMinhasFigs();
+    return minhasFigs.includes(fig);
+  }
 }

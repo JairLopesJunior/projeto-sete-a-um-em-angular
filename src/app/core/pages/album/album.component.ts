@@ -16,9 +16,9 @@ export class AlbumComponent implements OnInit {
   nome: string;
 
   constructor(private pService: PacotinhoService,
-              private _localstorageService: LocalstorageService,
               private _figurinhas: FigurinhaService,
-              private _usuarioService: UsuarioService) { }
+              private _usuarioService: UsuarioService,
+              private _figurinha: FigurinhaService) { }
 
   ngOnInit(): void {
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
@@ -35,7 +35,6 @@ export class AlbumComponent implements OnInit {
 
   colarFigurinha() {
     let numFig = ((document.getElementById('numFig') as HTMLInputElement).value);
-    console.log(numFig)
-    console.log(typeof numFig)
+    this._figurinha.colarFigurinha(Number(numFig));
   }
 }
