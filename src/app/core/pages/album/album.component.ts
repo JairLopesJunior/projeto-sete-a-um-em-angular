@@ -36,5 +36,6 @@ export class AlbumComponent implements OnInit {
   colarFigurinha() {
     let numFig = ((document.getElementById('numFig') as HTMLInputElement).value);
     this._figurinha.colarFigurinha(Number(numFig));
+    this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
   }
 }

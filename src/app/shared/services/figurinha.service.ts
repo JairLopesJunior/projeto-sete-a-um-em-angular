@@ -28,7 +28,17 @@ export class FigurinhaService {
   }
 
   colarFigurinha(fig: number) {
-    console.log(this.verificarFigExiste(fig));
+    const isFigExiste = this.verificarFigExiste(fig);
+    if(isFigExiste) {
+      alert("A Figurinha nº " + fig + " já existe no seu Álbum.");
+      return;
+    }
+    let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
+    const minhaFig = new Figurinha();
+    minhaFig.numero = fig;
+    minhasFigs.figurinhas.push(minhaFig);
+    this._localStorage.setMinhasFigObj(minhasFigs.figurinhas);
+    alert("A Figurinha nº " + fig + " foi colada com sucesso!!");
   }
 
   private verificarFigExiste(fig: number): boolean {
