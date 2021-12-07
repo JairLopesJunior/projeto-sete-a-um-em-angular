@@ -35,7 +35,20 @@ export class AlbumComponent implements OnInit {
 
   colarFigurinha() {
     let numFig = ((document.getElementById('numFig') as HTMLInputElement).value);
+    let isValid = this.isNumFigValido(Number(numFig));
+    if(!isValid){
+      alert("Número de Figurinha inválido!!");
+      return;
+    }
     this._figurinha.colarFigurinha(Number(numFig));
+    ((document.getElementById('numFig') as HTMLInputElement).value = '');
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
+  }
+
+  private isNumFigValido(numFig: number): boolean {
+    if(numFig <= 0 || numFig > 681){
+      return false;
+    }
+    return true;
   }
 }
