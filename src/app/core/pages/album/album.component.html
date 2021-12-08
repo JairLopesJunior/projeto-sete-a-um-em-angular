@@ -3,14 +3,11 @@
 </div>
 
 <div class="container mt-5" style="max-width: 60vw">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>Meu Álbum</h1>
-        </div>
-        <div class="col-md-3">
+    <div class="row mb-3">
+        <div class="col-md-4">
             <button class="btn btn-primary" (click)="comprarPacotinho()">COMPRAR PACOTINHO</button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                 COLAR FIGURINHA
             </button>
@@ -21,14 +18,49 @@
   
                         <!-- Modal Header -->
                         <div class="modal-header">
-                        <h4 class="modal-title">COLAR FIGURINHA</h4>
+                        <h5 class="modal-title">COLAR FIGURINHA</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
   
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="usr">Número da Figurinha:</label>
+                                <label for="usr">Informe o número da Figurinha:</label>
+                                <input type="number" class="form-control" id="numFig">
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="colarFigurinha(); $event.preventDefault()">COLAR</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">FECHAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VERIFICAR REPETIDA -->
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verificarSePossuiFigurinha">
+                VERIFICAR REPETIDA
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal" id="verificarSePossuiFigurinha">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+  
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title">VERIFICAR NÚMERO DA FIGURINHA</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+  
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="usr">Informe o número da Figurinha:</label>
                                 <input type="number" class="form-control" id="numFig">
                             </div>
                         </div>
