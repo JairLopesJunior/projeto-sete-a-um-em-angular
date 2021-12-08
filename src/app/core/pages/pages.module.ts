@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CadastroUsuarioModule } from './cadastro-usuario/cadastro-usuario.module';
 import { AlbumComponent } from './album/album.component';
+import { RepetidasComponent } from './repetidas/repetidas.component';
 
 
 
@@ -12,6 +13,7 @@ import { AlbumComponent } from './album/album.component';
 @NgModule({
   declarations: [
     HomeComponent,
+    RepetidasComponent,
   ],
   imports: [
     CommonModule,

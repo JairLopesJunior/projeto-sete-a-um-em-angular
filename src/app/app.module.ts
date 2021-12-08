@@ -7,10 +7,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { RepetidasComponent } from './src/app/core/pages/repetidas/repetidas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RepetidasComponent,
   ],
   imports: [
     BrowserModule,
