@@ -1,18 +1,18 @@
 import { CardModule } from './../../../shared/components/card/card.module';
-import { AlbumComponent } from './album.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RepetidasComponent } from './repetidas.component';
 
 @NgModule({
   declarations: [
-    AlbumComponent
+    RepetidasComponent
   ],
   imports: [
     CommonModule,
     CardModule
   ],
   exports: [
-    AlbumComponent
+    RepetidasComponent
   ]
 })
-export class AlbumModule { }
+export class RepetidasModule { }

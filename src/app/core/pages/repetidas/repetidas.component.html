@@ -3,4 +3,13 @@
         <h1 align="center">Figurinhas Repetidas</h1>
     </div>
     <hr style="margin: 0px">
+
+    <div class="row mt-4">
+        <div
+          class="col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2 mb-2"
+          *ngFor="let repetida of repetidas"
+        >
+            <app-card [figurinha]="repetida"></app-card>
+        </div>
+    </div>
 </div>

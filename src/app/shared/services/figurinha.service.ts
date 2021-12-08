@@ -27,6 +27,24 @@ export class FigurinhaService {
     return numFigsOrdenadas;
   }
 
+  obterFigRepetidas(): number[] {
+    let repetidas: number[] = [];
+    let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
+    let numFigs = minhasFigs.figurinhas.map((fig) => fig.numero);
+    numFigs.filter(function(elemento, i) {
+      if(numFigs.indexOf(elemento) !== i) {
+        repetidas.push(elemento)
+      }
+      return numFigs.indexOf(elemento) == i;
+    }) 
+    console.log(repetidas)
+
+    const repetidasOrdenadas = repetidas.sort(function(a, b) {
+      return a - b;
+    });
+    return repetidasOrdenadas;
+  }
+
   colarFigurinha(fig: number) {
     const isFigExiste = this.verificarFigExiste(fig);
     if(isFigExiste) {

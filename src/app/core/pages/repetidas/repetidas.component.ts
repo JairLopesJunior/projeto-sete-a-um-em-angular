@@ -1,3 +1,4 @@
+import { FigurinhaService } from './../../../shared/services/figurinha.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepetidasComponent implements OnInit {
 
-  constructor() { }
+  repetidas: number[] | undefined = [];
+
+  constructor(private _figurinhas: FigurinhaService) { }
 
   ngOnInit(): void {
+    this.repetidas = this._figurinhas.obterFigRepetidas();
   }
 
 }

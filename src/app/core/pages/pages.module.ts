@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CadastroUsuarioModule } from './cadastro-usuario/cadastro-usuario.module';
 import { AlbumComponent } from './album/album.component';
 import { RepetidasComponent } from './repetidas/repetidas.component';
+import { RepetidasModule } from './repetidas/repetidas.module';
 
 
 
@@ -13,12 +14,12 @@ import { RepetidasComponent } from './repetidas/repetidas.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    RepetidasComponent,
   ],
   imports: [
     CommonModule,
     CadastroUsuarioModule,
     AlbumModule,
+    RepetidasModule,
     RouterModule.forChild([
       {
           path: 'album', component: AlbumComponent
