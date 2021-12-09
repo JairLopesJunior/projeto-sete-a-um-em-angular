@@ -14,6 +14,7 @@ export class AlbumComponent implements OnInit {
   
   todasFigurinhas: number[] | undefined;
   nome: string;
+  numMinhasFigs: number;
 
   constructor(private pService: PacotinhoService,
               private _figurinhas: FigurinhaService,
@@ -23,17 +24,19 @@ export class AlbumComponent implements OnInit {
   ngOnInit(): void {
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
     this.nome = this._usuarioService.nome;
+    this.numMinhasFigs = this._figurinhas.obterQtdMinhasFigs();
   }
   
-  comprarPacotinho() {
+  comprarPacotinho(): void {
     const pacotinho = this.pService.pacotinho;
     const numeroFigurinhas: Figurinha[] = pacotinho.figurinhas;
     this.pService.setLocalStorage(numeroFigurinhas);
     alert("Pacotinho adquirido com sucesso, contendo as seguintes figurinhas: " + Object.values(numeroFigurinhas.map(fig => fig.numero)));
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
+    this.numMinhasFigs = this._figurinhas.obterQtdMinhasFigs();
   }
 
-  colarFigurinha() {
+  colarFigurinha(): void {
     let numFig = Number(((document.getElementById('numFig') as HTMLInputElement).value));
     let isValid = this.isNumFigValido(numFig);
     ((document.getElementById('numFig') as HTMLInputElement).value = '');
@@ -45,7 +48,7 @@ export class AlbumComponent implements OnInit {
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
   }
 
-  verificarFigExiste() {
+  verificarFigExiste(): void {
     let numFig = Number(((document.getElementById('figInformada') as HTMLInputElement).value));
     let isValid = this.isNumFigValido(numFig);
     ((document.getElementById('figInformada') as HTMLInputElement).value = '');

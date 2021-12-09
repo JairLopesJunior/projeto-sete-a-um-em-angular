@@ -45,7 +45,7 @@ export class FigurinhaService {
     return repetidasOrdenadas;
   }
 
-  colarFigurinha(fig: number) {
+  colarFigurinha(fig: number): void {
     const isFigExiste = this.verificarFigExiste(fig);
     if(isFigExiste) {
       alert("A Figurinha nº " + fig + " já existe no seu Álbum.");
@@ -63,4 +63,14 @@ export class FigurinhaService {
     let minhasFigs = this.obterMinhasFigs();
     return minhasFigs.includes(fig);
   }
+
+  obterQtdMinhasFigs(): number {
+    let qtdMinhasFigs = this._localStorage.getMinhasFigObj();
+    let numFigs = qtdMinhasFigs.figurinhas.map((fig) => fig.numero);
+    let qtdFigRepetidas = this.obterFigRepetidas().length;
+    console.log(qtdMinhasFigs)
+    console.log(qtdFigRepetidas)
+    return (numFigs.length - qtdFigRepetidas);
+  }
+
 }
