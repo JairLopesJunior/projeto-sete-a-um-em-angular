@@ -59,7 +59,7 @@ export class FigurinhaService {
     alert("A Figurinha nº " + fig + " foi colada com sucesso!!");
   }
 
-  private verificarFigExiste(fig: number): boolean {
+  verificarFigExiste(fig: number): boolean {
     let minhasFigs = this.obterMinhasFigs();
     return minhasFigs.includes(fig);
   }

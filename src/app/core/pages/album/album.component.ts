@@ -34,15 +34,31 @@ export class AlbumComponent implements OnInit {
   }
 
   colarFigurinha() {
-    let numFig = ((document.getElementById('numFig') as HTMLInputElement).value);
-    let isValid = this.isNumFigValido(Number(numFig));
+    let numFig = Number(((document.getElementById('numFig') as HTMLInputElement).value));
+    let isValid = this.isNumFigValido(numFig);
+    ((document.getElementById('numFig') as HTMLInputElement).value = '');
     if(!isValid){
       alert("Número de Figurinha inválido!!");
       return;
     }
-    this._figurinha.colarFigurinha(Number(numFig));
-    ((document.getElementById('numFig') as HTMLInputElement).value = '');
+    this._figurinha.colarFigurinha(numFig);
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
+  }
+
+  verificarFigExiste() {
+    let numFig = Number(((document.getElementById('figInformada') as HTMLInputElement).value));
+    let isValid = this.isNumFigValido(numFig);
+    ((document.getElementById('figInformada') as HTMLInputElement).value = '');
+    if(!isValid){
+      alert("Número de Figurinha inválido!!");
+      return;
+    }
+    const isFigExiste = this._figurinhas.verificarFigExiste(numFig);
+    if(isFigExiste) {
+      alert("Você já possui a Figurinha de nº " + numFig);
+      return;
+    }
+    alert("Você não possui a Figurinha de nº " + numFig);
   }
 
   private isNumFigValido(numFig: number): boolean {
