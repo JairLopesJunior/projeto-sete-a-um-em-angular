@@ -64,6 +64,11 @@ export class FigurinhaService {
     return minhasFigs.includes(fig);
   }
 
+  verificarFigRepetidaExiste(fig: number): boolean {
+    let minhasFigs = this.obterFigRepetidas();
+    return minhasFigs.includes(fig);
+  }
+
   obterQtdMinhasFigs(): number {
     let qtdMinhasFigs = this._localStorage.getMinhasFigObj();
     let numFigs = qtdMinhasFigs.figurinhas.map((fig) => fig.numero);

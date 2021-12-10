@@ -18,7 +18,7 @@ export class RepetidasComponent implements OnInit {
     this.numFigsRepetidas = this._figurinhas.obterFigRepetidas().length;
   }
 
-  verificarFigExiste(): void {
+  verificarFigRepetidaExiste(): void {
     let numFig = Number(((document.getElementById('figInformada') as HTMLInputElement).value));
     let isValid = this._figurinhas.isNumFigValido(numFig);
     ((document.getElementById('figInformada') as HTMLInputElement).value = '');
@@ -26,12 +26,12 @@ export class RepetidasComponent implements OnInit {
       alert("Número de Figurinha inválido!!");
       return;
     }
-    const isFigExiste = this._figurinhas.verificarFigExiste(numFig);
+    const isFigExiste = this._figurinhas.verificarFigRepetidaExiste(numFig);
     if(isFigExiste) {
-      alert("Você já possui a Figurinha de nº " + numFig);
+      alert("Você tem a Figurinha nº " + numFig + " repetida.");
       return;
     }
-    alert("Você não possui a Figurinha de nº " + numFig);
+    alert("Você não tem a Figurinha de nº " + numFig + " repetida.");
   }
 
 }
