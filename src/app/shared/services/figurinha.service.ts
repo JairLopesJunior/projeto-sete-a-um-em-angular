@@ -73,4 +73,11 @@ export class FigurinhaService {
     return (numFigs.length - qtdFigRepetidas);
   }
 
+  isNumFigValido(numFig: number): boolean {
+    if(numFig <= 0 || numFig > 681){
+      return false;
+    }
+    return true;
+  }
+
 }
