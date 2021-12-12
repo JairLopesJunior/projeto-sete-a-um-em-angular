@@ -53,8 +53,7 @@ export class FigurinhaService {
     let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
     const minhaFig = new Figurinha();
     minhaFig.numero = fig;
-    minhasFigs.figurinhas.push(minhaFig);
-    this._localStorage.setMinhasFigObj(minhasFigs.figurinhas);
+    this._localStorage.setMinhasFigObj([minhaFig]);
     alert("A Figurinha nº " + fig + " foi colada com sucesso!!");
   }
 
