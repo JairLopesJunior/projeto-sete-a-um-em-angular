@@ -40,7 +40,7 @@ export class LocalstorageService {
     return minhasFigObj;
   }
 
-  setMinhasFigObj(figurinhas: Figurinha[]) {
+  public setMinhasFigObj(figurinhas: Figurinha[]) {
     let minhasFig = this.getMinhasFigObj();
     minhasFig.figurinhas = minhasFig.figurinhas.concat(figurinhas);
     localStorage.setItem('minhasFigs', JSON.stringify(minhasFig));

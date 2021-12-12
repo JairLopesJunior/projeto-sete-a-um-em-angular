@@ -37,7 +37,6 @@ export class FigurinhaService {
       }
       return numFigs.indexOf(elemento) == i;
     }) 
-    console.log(repetidas)
 
     const repetidasOrdenadas = repetidas.sort(function(a, b) {
       return a - b;
@@ -73,8 +72,6 @@ export class FigurinhaService {
     let qtdMinhasFigs = this._localStorage.getMinhasFigObj();
     let numFigs = qtdMinhasFigs.figurinhas.map((fig) => fig.numero);
     let qtdFigRepetidas = this.obterFigRepetidas().length;
-    console.log(qtdMinhasFigs)
-    console.log(qtdFigRepetidas)
     return (numFigs.length - qtdFigRepetidas);
   }
 
@@ -85,4 +82,14 @@ export class FigurinhaService {
     return true;
   }
 
+  removerFigRepetida(figRepetida: number): Figurinhas {
+    let figRepetidas = this.obterFigRepetidas();
+    let minhasFigs = this._localStorage.getMinhasFigObj();
+    figRepetidas.filter((elemento: number, i: number) => {
+      if (figRepetidas.indexOf(elemento) !== i) {
+        minhasFigs.figurinhas.splice(figRepetidas.indexOf(elemento), 1);
+      }
+    }) 
+    return minhasFigs;
+  }
 }
