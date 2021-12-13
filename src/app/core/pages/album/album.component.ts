@@ -25,6 +25,7 @@ export class AlbumComponent implements OnInit {
 
   ngOnInit(): void {
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
+    console.log(this._figurinhas.obterMinhasFigs());
     this.nome = this._usuarioService.nome;
     this.numMinhasFigs = this._figurinhas.obterQtdMinhasFigs();
   }
@@ -67,7 +68,10 @@ export class AlbumComponent implements OnInit {
     figurinha.numero = numFigAdquirida;
     this._localStorage.setMinhasFigObj([figurinha]);
     let figRepetidas = this._figurinhas.removerFigRepetida(numFigRepetida);
-    localStorage.setItem('minhasFigs', JSON.stringify(figRepetidas));
+    const figurinhas = new Figurinhas();
+    figurinhas?.figurinhas ?? [];
+    figurinhas.figurinhas = figRepetidas;
+    localStorage.setItem('minhasFigs', JSON.stringify(figurinhas));
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
     alert("Figurinha adquirida com sucesso.");
   }

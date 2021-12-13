@@ -2,6 +2,7 @@ import { Figurinhas } from './../classes/figurinhas';
 import { LocalstorageService } from './localstorage.service';
 import { Figurinha } from './../classes/figurinha';
 import { Injectable } from '@angular/core';
+import * as _ from "lodash";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class FigurinhaService {
 
   obterMinhasFigs(): number[] {
     let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
+    console.log("ESSE " + minhasFigs)
+    console.log("ESSE " + minhasFigs.figurinhas)
     let numMinhasFigs = minhasFigs.figurinhas.map((fig) => fig.numero);
     const minhasFigsSemRepeticao = [...new Set(numMinhasFigs)];
     const numFigsOrdenadas = minhasFigsSemRepeticao.sort(function(a, b) {
@@ -81,14 +84,14 @@ export class FigurinhaService {
     return true;
   }
 
-  removerFigRepetida(figRepetida: number): Figurinhas {
-    let figRepetidas = this.obterFigRepetidas();
+  removerFigRepetida(figRepetida: number): Figurinha[] {
     let minhasFigs = this._localStorage.getMinhasFigObj();
-    figRepetidas.filter((elemento: number, i: number) => {
-      if (figRepetidas.indexOf(elemento) !== i) {
-        minhasFigs.figurinhas.splice(figRepetidas.indexOf(elemento), 1);
-      }
-    }) 
-    return minhasFigs;
+    let figs = minhasFigs.figurinhas.map((fig) => fig.numero); 
+    let numIndice = figs.indexOf(figRepetida);
+    minhasFigs.figurinhas.splice(numIndice, 1);
+    return minhasFigs.figurinhas;
   }
+
 }
+
+

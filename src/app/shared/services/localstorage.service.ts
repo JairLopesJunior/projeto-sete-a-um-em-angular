@@ -14,8 +14,8 @@ export class LocalstorageService {
     if(todasFig === null) return;
     const objTodasFig: Figurinhas = JSON.parse(todasFig);
     const figurinhas: Figurinha[] = objTodasFig.figurinhas;
-    const numFig = figurinhas
-                  .map((fig) => fig.numero)
+    const numFig = (figurinhas
+                  .map((fig) => fig.numero) as number[])
                   .sort(function(a, b) {
                     return a - b;
                   });
