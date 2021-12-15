@@ -1,7 +1,14 @@
 .div_flutuante{
+    display: flex;
+    justify-content: center;
     height: 60%;
-    background: #f00;
+    background: transparent;
     position: absolute;
     z-index: 100;
     max-width: 61%;
+}
+
+img {
+    max-height: 100%; 
+    max-width: 100%;
 }
