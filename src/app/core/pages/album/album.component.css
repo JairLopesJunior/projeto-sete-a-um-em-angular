@@ -1,0 +1,7 @@
+.div_flutuante{
+    height: 60%;
+    background: #f00;
+    position: absolute;
+    z-index: 100;
+    max-width: 61%;
+}
