@@ -1,0 +1,49 @@
+.login {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image: url("src/assets/albumLogin.jpeg");
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: initial;
+  background-clip: padding-box;
+  box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div_login {
+  background-image: linear-gradient(90deg, #e0c200, #009c3b) !important;
+  border-radius: 10px;
+  padding: 0px !important;
+}
+
+form {
+  margin: 30px 5px 30px 5px !important;
+}
+
+.container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.inputs {
+  margin: 30px !important;
+}
+
+.input_nome,
+.input_senha {
+  padding: 0 !important;
+}
+
+button {
+  background-color: #e0c200 !important;
+  color: #009c3b !important;
+  border-color: #e0c200 !important;
+}
+
+label {
+  color: #009c3b !important;
+}
