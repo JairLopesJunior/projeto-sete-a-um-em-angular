@@ -2,6 +2,20 @@
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-body {
-  overflow: hidden;
+button {
+    background-color: #e0c200 !important;
+    color: #009c3b !important;
+    border-color: #e0c200 !important;
+}
+
+button:hover {
+    background-color: #009c3b !important;
+    color: #e0c200 !important;
+    border-color: #009c3b !important;
+}
+
+h1, h5 {
+    background: linear-gradient(150deg, #e0c200, #009c3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
