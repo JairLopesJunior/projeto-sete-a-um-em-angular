@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RepetidasComponent } from '../core/pages/repetidas/repetidas.component';
+import { HomeComponent } from './../core/pages/home/home.component';
 import { CadastroUsuarioComponent } from './../core/pages/cadastro-usuario/cadastro-usuario.component';
-import { AlbumComponent } from '../core/pages/album/album.component';
 
 
 
@@ -17,7 +17,7 @@ import { AlbumComponent } from '../core/pages/album/album.component';
     CommonModule,
     RouterModule.forChild([
       {
-          path: 'album', component: AlbumComponent
+          path: 'home', component: HomeComponent
       },
       {
         path: 'repetidas', component: RepetidasComponent
