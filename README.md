@@ -29,7 +29,24 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Directory Descriptive:
 
 ```
-
+../projeto-sete-a-um-em-angular/
+└── src
+    ├── app
+    │   ├── core
+    │   │   └── pages
+    │   │       ├── album
+    │   │       ├── cadastro-usuario
+    │   │       ├── home
+    │   │       └── repetidas
+    │   └── shared
+    │       ├── classes
+    │       ├── components
+    │       │   ├── campo-control-erro
+    │       │   ├── card
+    │       │   └── navbar
+    │       └── services
+    ├── assets
+    └── environments
 ```
 
 ## Access Website:
