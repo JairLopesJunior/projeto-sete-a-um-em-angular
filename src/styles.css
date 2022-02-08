@@ -2,13 +2,15 @@
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-button {
+@import "~angular-notifier/styles.css";
+
+.button-color {
     background-color: #e0c200 !important;
     color: #009c3b !important;
     border-color: #e0c200 !important;
 }
 
-button:hover {
+.button-color:hover {
     background-color: #009c3b !important;
     color: #e0c200 !important;
     border-color: #009c3b !important;

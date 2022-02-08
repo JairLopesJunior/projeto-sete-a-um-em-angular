@@ -5,6 +5,7 @@ import { Figurinha } from './../../../shared/classes/figurinha';
 import { LocalstorageService } from './../../../shared/services/localstorage.service';
 import { PacotinhoService } from './../../../shared/services/pacotinho.service';
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-album',
@@ -16,12 +17,16 @@ export class AlbumComponent implements OnInit {
   todasFigurinhas: number[] | undefined;
   nome: string;
   numMinhasFigs: number;
+  private readonly _notifierService: NotifierService;
 
   constructor(private pService: PacotinhoService,
               private _figurinhas: FigurinhaService,
               private _usuarioService: UsuarioService,
               private _figurinha: FigurinhaService,
-              private _localStorage: LocalstorageService) { }
+              private _localStorage: LocalstorageService,
+              notifierService: NotifierService) { 
+    this._notifierService = notifierService;
+  }
 
   ngOnInit(): void {
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
@@ -34,7 +39,7 @@ export class AlbumComponent implements OnInit {
     const pacotinho = this.pService.pacotinho;
     const numeroFigurinhas: Figurinha[] = pacotinho.figurinhas;
     this.pService.setLocalStorage(numeroFigurinhas);
-    alert("Pacotinho adquirido com sucesso, contendo as seguintes figurinhas: " + Object.values(numeroFigurinhas.map(fig => fig.numero)));
+    this._notifierService.notify('success', `Pacotinho adquirido com sucesso, contendo as seguintes figurinhas:  ${Object.values(numeroFigurinhas.map(fig => fig.numero))}`);
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
     this.numMinhasFigs = this._figurinhas.obterQtdMinhasFigs();
   }
@@ -44,7 +49,7 @@ export class AlbumComponent implements OnInit {
     let isValid = this._figurinhas.isNumFigValido(numFig);
     ((document.getElementById('numFig') as HTMLInputElement).value = '');
     if(!isValid){
-      alert("Número de Figurinha inválido!!");
+      this._notifierService.notify('error', 'Número de Figurinha inválido!!');
       return;
     }
     this._figurinha.colarFigurinha(numFig);
@@ -59,7 +64,7 @@ export class AlbumComponent implements OnInit {
     ((document.getElementById('numFigRepetida') as HTMLInputElement).value = '');
     ((document.getElementById('numFigAdquirida') as HTMLInputElement).value = '');
     if(!numFigRepetidaVerificada || !numFigAdquiridaVerificada) {
-      alert("Número de Figurinha inválido!!");
+      this._notifierService.notify('error', 'Número de Figurinha inválido!!');
       return;
     }
     let figurinhasValidadas = this.validarFigurinhasTroca(numFigRepetida, numFigAdquirida);
@@ -73,18 +78,18 @@ export class AlbumComponent implements OnInit {
     figurinhas.figurinhas = figRepetidas;
     localStorage.setItem('minhasFigs', JSON.stringify(figurinhas));
     this.todasFigurinhas = this._figurinhas.obterMinhasFigs();
-    alert("Figurinha adquirida com sucesso.");
+    this._notifierService.notify('success', 'Figurinha adquirida com sucesso.');
   }
 
   private validarFigurinhasTroca(numFigRepetida: number, numFigAdquirida: number): void | string {
     const numFigRepetidaIsValid = this._figurinhas.verificarFigRepetidaExiste(numFigRepetida);
     const numFigAdquiridaIsValid = this._figurinhas.verificarFigExiste(numFigAdquirida);
     if(!numFigRepetidaIsValid) {
-      alert("Você não possui a figurinha nº " + numFigRepetida + " para troca.");
+      this._notifierService.notify('error', `Você não possui a figurinha nº ${numFigRepetida}  para troca.`);
       return;
     }
     if(numFigAdquiridaIsValid) {
-      alert("Você já possui a Figurinha nº " + numFigAdquirida);
+      this._notifierService.notify('error', `Você já possui a Figurinha nº ${numFigAdquirida}`);
       return;
     }
     return '';

@@ -1,6 +1,7 @@
 import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,13 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   keyAlbumRetornado = localStorage.getItem('album');
+  private readonly _notifierService: NotifierService;
 
   constructor(private usuarioService: UsuarioService,
-              private router: Router,) { }
+              private router: Router,
+              notifierService: NotifierService) {
+    this._notifierService = notifierService;
+  }
 
   ngOnInit(): void {
     this.keyAlbumRetornado = localStorage.getItem('album');
@@ -23,12 +28,12 @@ export class HomeComponent implements OnInit {
 
   comprarAlbum() {
     if(this.usuarioService.nome === '') {
-      alert("Por favor faça o cadastro!!");
+      this._notifierService.notify('error', 'Por favor faça o cadastro!!');
       return;
     }
     const valueNomeUsuario = localStorage.getItem(this.usuarioService.nomeUsuario)!;
     localStorage.setItem('album', valueNomeUsuario);
-    alert("Álbum adquirido com sucesso :D");
+    this._notifierService.notify('success', 'Álbum adquirido com sucesso :D');
     this.router.navigate(['/album']);
   }
 

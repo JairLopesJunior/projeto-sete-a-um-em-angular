@@ -3,13 +3,19 @@ import { LocalstorageService } from './localstorage.service';
 import { Figurinha } from './../classes/figurinha';
 import { Injectable } from '@angular/core';
 import * as _ from "lodash";
+import { NotifierService } from 'angular-notifier';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FigurinhaService {
 
-  constructor(private _localStorage: LocalstorageService) { }
+  private readonly _notifierService: NotifierService;
+
+  constructor(private _localStorage: LocalstorageService,
+              notifierService: NotifierService) { 
+    this._notifierService = notifierService;
+  }
 
   get getFigurinha() {
     let figurinha = Math.ceil(Math.random() * 681);
@@ -20,8 +26,6 @@ export class FigurinhaService {
 
   obterMinhasFigs(): number[] {
     let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
-    console.log("ESSE " + minhasFigs)
-    console.log("ESSE " + minhasFigs.figurinhas)
     let numMinhasFigs = minhasFigs.figurinhas.map((fig) => fig.numero);
     const minhasFigsSemRepeticao = [...new Set(numMinhasFigs)];
     const numFigsOrdenadas = minhasFigsSemRepeticao.sort(function(a, b) {
@@ -50,14 +54,14 @@ export class FigurinhaService {
   colarFigurinha(fig: number): void {
     const isFigExiste = this.verificarFigExiste(fig);
     if(isFigExiste) {
-      alert("A Figurinha nº " + fig + " já existe no seu Álbum.");
+      this._notifierService.notify('error', `A Figurinha nº ${fig} já existe no seu Álbum.`);
       return;
     }
     let minhasFigs: Figurinhas = this._localStorage.getMinhasFigObj();
     const minhaFig = new Figurinha();
     minhaFig.numero = fig;
     this._localStorage.setMinhasFigObj([minhaFig]);
-    alert("A Figurinha nº " + fig + " foi colada com sucesso!!");
+    this._notifierService.notify('success', `A Figurinha nº ${fig} foi colada com sucesso!!`);
   }
 
   verificarFigExiste(fig: number): boolean {

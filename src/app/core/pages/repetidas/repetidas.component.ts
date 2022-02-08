@@ -1,5 +1,6 @@
 import { FigurinhaService } from './../../../shared/services/figurinha.service';
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-repetidas',
@@ -10,8 +11,12 @@ export class RepetidasComponent implements OnInit {
 
   repetidas: number[] | undefined = [];
   numFigsRepetidas: number;
+  private readonly _notifierService: NotifierService;
 
-  constructor(private _figurinhas: FigurinhaService) { }
+  constructor(private _figurinhas: FigurinhaService,
+              notifierService: NotifierService) { 
+    this._notifierService = notifierService;
+  }
 
   ngOnInit(): void {
     this.repetidas = this._figurinhas.obterFigRepetidas();
@@ -23,15 +28,15 @@ export class RepetidasComponent implements OnInit {
     let isValid = this._figurinhas.isNumFigValido(numFig);
     ((document.getElementById('figInformada') as HTMLInputElement).value = '');
     if(!isValid){
-      alert("Número de Figurinha inválido!!");
+      this._notifierService.notify('error', 'Número de Figurinha inválido!!');
       return;
     }
     const isFigExiste = this._figurinhas.verificarFigRepetidaExiste(numFig);
     if(isFigExiste) {
-      alert("Você tem a Figurinha nº " + numFig + " repetida.");
+      this._notifierService.notify('error', `Você tem a Figurinha nº ${numFig} repetida.`);
       return;
     }
-    alert("Você não tem a Figurinha de nº " + numFig + " repetida.");
+    this._notifierService.notify('error', `Você não tem a Figurinha de nº ${numFig} repetida.`);
   }
 
 }

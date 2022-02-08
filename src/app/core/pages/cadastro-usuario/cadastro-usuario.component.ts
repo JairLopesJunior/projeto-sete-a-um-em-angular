@@ -2,6 +2,7 @@ import { UsuarioService } from './../../../shared/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -11,9 +12,13 @@ import { Router } from '@angular/router';
 export class CadastroUsuarioComponent implements OnInit {
 
   cadastroUsuario: FormGroup;
+  private readonly _notifierService: NotifierService;
 
   constructor(private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              notifierService: NotifierService) {
+    this._notifierService = notifierService;
+  }
 
   get nome() {
     return this.cadastroUsuario.get('nome')?.value;
@@ -31,9 +36,9 @@ export class CadastroUsuarioComponent implements OnInit {
     if(this.cadastroUsuario){
       const keyRetornada = localStorage.getItem(this.nome);
       const isIgual = keyRetornada !== null;
-      isIgual ? alert("Já existe um usuário com este nome!!")
+      isIgual ? this._notifierService.notify('error', 'Já existe um usuário com este nome!!')
               : ( localStorage.setItem('login', JSON.stringify([this.nome, this.senha])),
-                  alert("Dados salvos com sucesso!!"),
+                  this._notifierService.notify('success', 'Dados salvos com sucesso!!'),
                   this.router.navigate(['/home']) );
     }
   }
